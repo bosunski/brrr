@@ -1,0 +1,429 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Yeon+Sung&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      body,
+      button,
+      p,
+      a {
+        font-family: "Open Sans", sans-serif;
+      }
+
+      .navbar {
+        background: gray;
+        height: 10vh;
+      }
+
+      .navbar .brand {
+        font-family: "Yeon Sung", cursive;
+        font-size: 2rem;
+      }
+
+      .explorer-menu,
+      .main {
+        min-height: 90vh;
+        max-height: 90vh;
+        /* overflow: scroll; */ /* uncomment this when in prod cause large codebases will overflow*/
+      }
+
+      .explorer-menu .header {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+      }
+
+      .explorer-menu .header p {
+        margin-bottom: 0;
+      }
+
+      i {
+        cursor: pointer;
+      }
+
+      .explorer-menu .file-name {
+        font-size: 12px;
+      }
+
+      .explorer-menu .actions {
+        color: rgba(0, 0, 0, 0.125);
+      }
+      .explorer-menu .actions i:hover,
+      .general-cta i:hover {
+        color: rgba(0, 0, 0, 0.8);
+      }
+
+      .general-cta {
+        color: rgba(0, 0, 0, 0.4);
+      }
+
+      .text-editor .title .nav-link {
+        display: block;
+        padding: 0.3rem 1rem;
+        font-size: 14px;
+      }
+
+      /* .text-editor .title {
+  border-bottom: 2px solid rgba(0, 0, 0, .125);
+} */
+
+      .nav-tabs {
+        border-bottom: 0 !important;
+      }
+
+      .explorer-menu .footer {
+        height: 8vh;
+        border-top: 4px solid rgba(0, 0, 0, 0.125);
+      }
+
+      .nav-item .nav-link.active {
+        color: #495057;
+        background-color: rgba(0, 0, 0, 0.25) !important;
+        border-color: #dee2e6 #dee2e6 rgba(0, 0, 0, 0.25) !important;
+      }
+
+      .nav-item .nav-link {
+        color: #495057;
+        font-size: 13px !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+      }
+
+      .main .text-editor {
+        background: rgba(0, 0, 0, 0.15) !important;
+      }
+
+      .main .breadcrumb {
+        font-size: 12px;
+        margin-bottom: 0 !important;
+      }
+
+      .main .content {
+        /* height: 100%; */
+        background-color: rgba(0, 0, 0, 0.25) !important;
+      }
+      .browser .taskbar {
+        height: 40px;
+        background: yellow;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .browser .taskbar i:hover {
+        color: rgba(0, 0, 0, 0.8);
+      }
+
+      .browser .taskbar .input-field {
+        width: 60%;
+      }
+
+      .browser .nav-item {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar d-flex justify-content-around">
+      <h1 class="brand">Ciruoe</h1>
+      <div>
+        <button class="btn btn-primary btn-sm">
+          <i class="fas fa-download"></i> Save to Notebook
+        </button>
+        <button class="btn border-primary btn-transparent btn-sm text-primary">
+          New cir
+        </button>
+      </div>
+    </nav>
+
+    <main class="d-flex justify-content-center">
+      <div class="row w-100">
+        <div
+          class="col-3 px-0 explorer-menu d-flex border-right justify-content-center"
+        >
+          <div class="row h-100 w-100">
+            <div
+              class="col-2 border-right px-0 pt-1 d-flex justify-content-center"
+            >
+              <div class="text-center general-cta d-block">
+                <div>
+                  <i
+                    class="fas fa-dice-d6 fa-2x my-3"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="Home"
+                  ></i>
+                </div>
+                <div>
+                  <i
+                    class="fas fa-dice-d20 my-3"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="Packages"
+                  ></i>
+                </div>
+                <div>
+                  <i
+                    class="fas fa-box-open my-3"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="Packages"
+                  ></i>
+                </div>
+                <div>
+                  <i
+                    class="fas fa-plane-departure my-3"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="Deployment"
+                  ></i>
+                </div>
+                <div>
+                  <i
+                    class="fas fa-cog my-3"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="Settings & Configuration"
+                  ></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-10 px-0 d-flex flex-column">
+              <header class="header d-flex justify-content-between px-3">
+                <p>Explorer</p>
+                <div>
+                  <i class="fas fa-file-medical fa-sm"></i>
+                  <i class="fas fa-undo-alt mx-1 fa-sm"></i>
+                  <i class="fas fa-folder-plus fa-sm"></i>
+                  <!-- add other icons here to denote directory wide functionalities like
+                undo, redo, delete folder, edit file name etc
+                --></div>
+              </header>
+              <div class="list-group list-group-flush">
+                <button
+                  type="button"
+                  class="list-group-item list-group-item-action px-3 d-flex justify-content-between align-items-center"
+                >
+                  <div>
+                    <i class="fas fa-folder mr-1"></i>
+                    <span class="file-name">node_modules </span>
+                  </div>
+                  <div class="d-block actions">
+                    <i class="fas fa-pencil-alt fa-sm"></i>
+                    <i class="fas fa-folder-plus mx-1 fa-sm"></i>
+                    <i class="fas fa-ellipsis-v fa-sm"></i>
+                  </div>
+                </button>
+                <button
+                  type="button"
+                  class="list-group-item list-group-item-action px-3 d-flex justify-content-between align-items-center"
+                >
+                  <div>
+                    <i class="fas fa-folder mr-1"></i>
+                    <span class="file-name">src </span>
+                  </div>
+                  <div class="d-block actions">
+                    <i class="fas fa-pencil-alt fa-sm"></i>
+                    <i class="fas fa-folder-plus mx-1 fa-sm"></i>
+                    <i class="fas fa-ellipsis-v fa-sm"></i>
+                  </div>
+                </button>
+                <button
+                  type="button"
+                  class="list-group-item list-group-item-action px-3 d-flex justify-content-between align-items-center"
+                >
+                  <div>
+                    <!-- use this icon when the folder is open -->
+                    <i class="fas fa-folder-open mr-1"></i>
+                    <span class="file-name">utils </span>
+                  </div>
+                  <div class="d-block actions">
+                    <i class="fas fa-pencil-alt fa-sm"></i>
+                    <i class="fas fa-folder-plus mx-1 fa-sm"></i>
+                    <i class="fas fa-ellipsis-v fa-sm"></i>
+                  </div>
+                </button>
+                <div></div>
+                <button
+                  type="button"
+                  class="list-group-item list-group-item-action px-3 d-flex justify-content-between align-items-center"
+                >
+                  <div>
+                    <i class="far fa-file mr-1"></i>
+                    <!-- use this "fas" when file is open -->
+                    <!-- <i class="fas fa-file mr-1"></i> -->
+                    <span class="file-name">server.php </span>
+                  </div>
+                  <div class="d-block actions">
+                    <i class="fas fa-pencil-alt fa-sm"></i>
+                    <i class="fas fa-copy mx-1 fa-sm"></i>
+                    <i class="fas fa-ellipsis-v fa-sm"></i>
+                  </div>
+                </button>
+              </div>
+              <div class="footer mt-auto px-2 d-flex">
+                <div class="w-100 d-flex h-100 align-items-center">
+                  <i class="fas fa-user-circle fa-2x mr-auto"></i>
+                  <i class="fab fa-github"></i>
+                  <i class="fab fa-gitlab  mx-2"></i>
+                  <i class="fab fa-bitbucket"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-9 main p-0 h-100 d-flex justify-content-center">
+          <div class="row w-100 h-100">
+            <div
+              class="tab-content bg-danger col-6 px-0 text-editor "
+              id="nav-tabContent"
+            >
+              <nav aria-label="breadcrumb" class="p-0">
+                <ol class="breadcrumb p-0">
+                  <li class="breadcrumb-item"><a href="#">Src</a></li>
+                  <li class="breadcrumb-item"><a href="#">components</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    app.php
+                  </li>
+                </ol>
+              </nav>
+              <div class="d-flex title">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      id="home-tab"
+                      data-toggle="tab"
+                      href="#home"
+                      role="tab"
+                      aria-controls="home"
+                      aria-selected="true"
+                      >app.php</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="profile-tab"
+                      data-toggle="tab"
+                      href="#profile"
+                      role="tab"
+                      aria-controls="profile"
+                      aria-selected="false"
+                      >header.blade.php</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="contact-tab"
+                      data-toggle="tab"
+                      href="#contact"
+                      role="tab"
+                      aria-controls="contact"
+                      aria-selected="false"
+                      >server.php</a
+                    >
+                  </li>
+                </ul>
+                <ul class="ml-auto list-unstyled list-inline mr-2">
+                  <li class="list-inline-item">
+                    <i class="fas fa-code-branch"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <i class="fas fa-columns"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <i class="fas fa-ellipsis-h"></i>
+                  </li>
+                </ul>
+              </div>
+              <div class="content">
+                <pre>
+                <p>Bosyn</p>
+              </pre
+                >
+              </div>
+            </div>
+            <div class="browser col-6 px-0 h-100 bg-success">
+              <nav>
+                <div class="nav nav-tabs rounded-0" id="nav-tab" role="tablist">
+                  <a
+                    class="nav-item nav-link rounded-0 active"
+                    id="nav-home-tab"
+                    data-toggle="tab"
+                    href="#nav-home"
+                    role="tab"
+                    aria-controls="nav-home"
+                    aria-selected="true"
+                    >Browser</a
+                  >
+                </div>
+              </nav>
+              <div class="tab-content bg-danger " id="nav-tabContent">
+                <div
+                  class="tab-pane fade show active bg-danger"
+                  id="nav-home"
+                  role="tabpanel"
+                  aria-labelledby="nav-home-tab"
+                >
+                  <div
+                    class="taskbar d-flex align-items-center justify-content-between"
+                  >
+                    <div class="ml-3">
+                      <i class="fas fa-arrow-left mx-1"></i>
+                      <i class="fas fa-arrow-right mx-1"></i>
+                      <i class="fas fa-redo-alt mx-1"></i>
+                    </div>
+                    <div class="input-field">
+                      <input
+                        type="text"
+                        class="form-control form-control-sm w-100"
+                        placeholder="https://api.olatun.bosun/docs"
+                      />
+                    </div>
+                    <div class="mr-3">
+                      <i class="far fa-bookmark mx-1"></i>
+                      <i class="fas fa-border-all mx-1"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

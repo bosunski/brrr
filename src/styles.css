@@ -1,0 +1,116 @@
+body,
+button,
+p,
+a {
+  font-family: "Open Sans", sans-serif;
+}
+
+.navbar {
+  background: gray;
+  height: 10vh;
+}
+
+.navbar .brand {
+  font-family: "Yeon Sung", cursive;
+  font-size: 2rem;
+}
+
+.explorer-menu,
+.main {
+  min-height: 90vh;
+  max-height: 90vh;
+  /* overflow: scroll; */ /* uncomment this when in prod cause large codebases will overflow*/
+}
+
+.explorer-menu .header {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+}
+
+.explorer-menu .header p {
+  margin-bottom: 0;
+}
+
+i {
+  cursor: pointer;
+}
+
+.explorer-menu .file-name {
+  font-size: 12px;
+}
+
+.explorer-menu .actions {
+  color: rgba(0, 0, 0, 0.125);
+}
+.explorer-menu .actions i:hover,
+.general-cta i:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.general-cta {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.text-editor .title .nav-link {
+  display: block;
+  padding: 0.3rem 1rem;
+  font-size: 14px;
+}
+
+/* .text-editor .title {
+  border-bottom: 2px solid rgba(0, 0, 0, .125);
+} */
+
+.nav-tabs {
+  border-bottom: 0 !important;
+}
+
+.explorer-menu .footer {
+  height: 8vh;
+  border-top: 4px solid rgba(0, 0, 0, 0.125);
+}
+
+.nav-item .nav-link.active {
+  color: #495057;
+  background-color: rgba(0, 0, 0, 0.25) !important;
+  border-color: #dee2e6 #dee2e6 rgba(0, 0, 0, 0.25) !important;
+}
+
+.nav-item .nav-link {
+  color: #495057;
+  font-size: 13px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.main .text-editor {
+  background: rgba(0, 0, 0, 0.15) !important;
+}
+
+.main .breadcrumb {
+  font-size: 12px;
+  margin-bottom: 0 !important;
+}
+
+.main .content {
+  /* height: 100%; */
+  background-color: rgba(0, 0, 0, 0.25) !important;
+}
+.browser .taskbar {
+  height: 40px;
+  background: yellow;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.browser .taskbar i:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.browser .taskbar .input-field {
+  width: 60%;
+}
+
+.browser .nav-item {
+  font-size: 14px;
+}
